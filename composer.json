@@ -1,0 +1,31 @@
+{
+  "name": "davidjeddy/yii2-naabs3",
+  "description": "FreeRadius administration module for Yii2.",
+  "keywords": [
+    "yii2",
+    "module",
+    "freeradius"
+  ],
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "homepage": "https://github.com/davidjeddy/yii2-naabs3",
+  "support": {
+    "source": "https://github.com/davidjeddy/yii2-naabs3",
+    "issues": "https://github.com/davidjeddy/yii2-naabs3/issues"
+  },
+  "authors": [
+    {
+      "name": "David J Eddy",
+      "email": "me@davidjeddy.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "^2.0.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "dje\\yii2-naabs3\\": "./src"
+    }
+  }
+}
