@@ -1,7 +1,7 @@
 # Naabs 3
 
 ## What
-Naabs 3 (Network access and billing service, version 3) is a module for the Yii2 framework  to administer FreeRadius.
+Naabs 3 (Network access and billing service, version 3) is a module for the Yii2 framework to administer a FreeRadius database.
 
 ## Badges
 [![Build Status](https://travis-ci.org/davidjeddy/yii2-naabs3.svg?branch=master&format=flat-square)](https://travis-ci.org/davidjeddy/yii2-naabs3)
