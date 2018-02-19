@@ -28,8 +28,9 @@ This project would not be possible without efforts of the following person/s and
 
 ## Install
 Pick one:
+ - Install Yii2 framework (we recommend the [Yii2-Starter-Kit](https://github.com/trntv/yii2-starter-kit))
  - Execute `composer install davidjeddy/yii2-naabs3` in the projects root.
- - Add `"davidjeddy/yii2-naabs3": "^1",` to your projects composer.json in the `required` sections; [THEN](https://www.youtube.com/channel/UCPSfjD7o1CQZXzdAy56c8kg) run `composer install` in the projects root.
+   - OR `"davidjeddy/yii2-naabs3": "^1",` to your projects composer.json in the `required` sections; [THEN](https://www.youtube.com/channel/UCPSfjD7o1CQZXzdAy56c8kg) run `composer install` in the projects root.
 
 ## Note
 This project `might` also work on a propratery RADIUS implimentation; however we do not have one available so YMMV.
