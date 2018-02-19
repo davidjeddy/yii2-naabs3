@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace dje\naabs3\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -9,13 +9,13 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-use common\models\TimeAmountOptions;
+use backend\models\Role;
 use common\models\UserDetails;
 
 /**
- * TimeAmountController implements the CRUD actions for TimeAmountOptions model.
+ * RoleController implements the CRUD actions for Role model.
  */
-class TimeAmountController extends Controller
+class RoleController extends Controller
 {
     /**
      * [behaviors description]
@@ -51,13 +51,13 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Lists all TimeAmountOptions models.
+     * Lists all Role models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => TimeAmountOptions::find(),
+            'query' => Role::find(),
         ]);
 
         return $this->render('index', [
@@ -66,7 +66,7 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Displays a single TimeAmountOptions model.
+     * Displays a single Role model.
      * @param integer $id
      * @return mixed
      */
@@ -78,13 +78,13 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Creates a new TimeAmountOptions model.
+     * Creates a new Role model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TimeAmountOptions();
+        $model = new Role();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -96,7 +96,7 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Updates an existing TimeAmountOptions model.
+     * Updates an existing Role model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -115,7 +115,7 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Deletes an existing TimeAmountOptions model.
+     * Deletes an existing Role model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -128,15 +128,15 @@ class TimeAmountController extends Controller
     }
 
     /**
-     * Finds the TimeAmountOptions model based on its primary key value.
+     * Finds the Role model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TimeAmountOptions the loaded model
+     * @return Role the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TimeAmountOptions::findOne($id)) !== null) {
+        if (($model = Role::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

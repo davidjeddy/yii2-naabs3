@@ -1,27 +1,34 @@
 <?php
 
-namespace common\models;
+namespace dje\naabs3\models;
 
 use Yii;
+use yii\base\Model;
 
 /**
- * This is the model class for table "app_data".
+ * This is the model class for table "cc_format".
  *
  * @property integer $id
- * @property string $key
- * @property string $value
- * @property string $created_at
- * @property string $updated_at
- * @property string $delete
+ * @property string $number
+ * @property integer $exp_month
+ * @property integer $exp_year
+ * @property integer $cvv2
+ * @property string $type
  */
-class AppData extends \yii\db\ActiveRecord
+class CCFormat extends \yii\db\ActiveRecord
 {
+    public $cvv2;
+    public $exp_month;
+    public $exp_year;
+    public $number;
+    public $type;
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'app_data';
+        return null;//'cc_format';
     }
 
     /**
@@ -30,10 +37,10 @@ class AppData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['key', 'value'], 'required'],
-            [['value'], 'string'],
-            [['key', 'value', 'created_at', 'updated_at', 'delete'], 'safe'],
-            [['key'], 'string', 'max' => 8]
+            [['type', 'number', 'exp_month', 'exp_year', 'cvv2'], 'required'],
+            [['cvv2', 'exp_year'], 'string',  'max' => 4],
+            [['exp_month'], 'string',  'max'        => 2],
+            [['number'], 'string', 'max'            => 16],
         ];
     }
 
@@ -43,12 +50,11 @@ class AppData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'created_at' => 'created_at',
-            'delete'  => 'Delete',
-            'id'      => 'ID',
-            'key'     => 'Key',
-            'updated_at' => 'updated_at',
-            'value'   => 'Value',
+            'cvv2'      => 'Cvv2',
+            'exp_month' => 'Exp Month',
+            'exp_year'  => 'Exp Year',
+            'number'    => 'Number',
+            'type'      => 'Card Type',
         ];
     }
 

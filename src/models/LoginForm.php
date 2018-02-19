@@ -1,5 +1,5 @@
 <?php
-namespace common\models;
+namespace dje\naabs3\models;
 
 use Yii;
 use yii\base\Model;

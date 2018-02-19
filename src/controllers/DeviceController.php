@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace dje\naabs3\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -9,13 +9,13 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-use backend\models\Role;
+use common\models\Device;
 use common\models\UserDetails;
 
 /**
- * RoleController implements the CRUD actions for Role model.
+ * DeviceController implements the CRUD actions for Device model.
  */
-class RoleController extends Controller
+class DeviceController extends Controller
 {
     /**
      * [behaviors description]
@@ -51,13 +51,13 @@ class RoleController extends Controller
     }
 
     /**
-     * Lists all Role models.
+     * Lists all Device models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Role::find(),
+            'query' => Device::find(),
         ]);
 
         return $this->render('index', [
@@ -66,7 +66,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Displays a single Role model.
+     * Displays a single Device model.
      * @param integer $id
      * @return mixed
      */
@@ -78,13 +78,13 @@ class RoleController extends Controller
     }
 
     /**
-     * Creates a new Role model.
+     * Creates a new Device model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Role();
+        $model = new Device();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -96,7 +96,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Updates an existing Role model.
+     * Updates an existing Device model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -115,7 +115,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Deletes an existing Role model.
+     * Deletes an existing Device model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -128,15 +128,15 @@ class RoleController extends Controller
     }
 
     /**
-     * Finds the Role model based on its primary key value.
+     * Finds the Device model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Role the loaded model
+     * @return Device the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Role::findOne($id)) !== null) {
+        if (($model = Device::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace backend\modules\i18n;
+namespace dje\naabs3;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'dje\yii2-naabs3\backend\controllers';
+    public $controllerNamespace = 'dje\naabs3\controllers';
 
     public function init()
     {

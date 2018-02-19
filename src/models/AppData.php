@@ -1,28 +1,27 @@
 <?php
 
-namespace common\models;
+namespace dje\naabs3\models;
 
 use Yii;
 
 /**
- * This is the model class for table "device_count_options".
+ * This is the model class for table "app_data".
  *
  * @property integer $id
  * @property string $key
- * @property integer $value
- * @property string $cost
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $deleted_at
+ * @property string $value
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $delete
  */
-class DeviceCountOptions extends \yii\db\ActiveRecord
+class AppData extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'device_count_options';
+        return 'app_data';
     }
 
     /**
@@ -32,9 +31,9 @@ class DeviceCountOptions extends \yii\db\ActiveRecord
     {
         return [
             [['key', 'value'], 'required'],
-            [['value', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
-            [['cost'], 'number'],
-            [['key'], 'string', 'max' => 32]
+            [['value'], 'string'],
+            [['key', 'value', 'created_at', 'updated_at', 'delete'], 'safe'],
+            [['key'], 'string', 'max' => 8]
         ];
     }
 
@@ -44,12 +43,11 @@ class DeviceCountOptions extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cost'    => 'Cost',
-            'created_at' => 'Created At',
-            'deleted_at' => 'Deleted At',
+            'created_at' => 'created_at',
+            'delete'  => 'Delete',
             'id'      => 'ID',
             'key'     => 'Key',
-            'updated_at' => 'Updated At',
+            'updated_at' => 'updated_at',
             'value'   => 'Value',
         ];
     }

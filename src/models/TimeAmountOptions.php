@@ -1,34 +1,28 @@
 <?php
 
-namespace common\models;
+namespace dje\naabs3\models;
 
 use Yii;
-use yii\base\Model;
 
 /**
- * This is the model class for table "cc_format".
+ * This is the model class for table "time_amount_options".
  *
  * @property integer $id
- * @property string $number
- * @property integer $exp_month
- * @property integer $exp_year
- * @property integer $cvv2
- * @property string $type
+ * @property string $key
+ * @property integer $value
+ * @property string $cost
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $deleted_at
  */
-class CCFormat extends \yii\db\ActiveRecord
+class TimeAmountOptions extends \yii\db\ActiveRecord
 {
-    public $cvv2;
-    public $exp_month;
-    public $exp_year;
-    public $number;
-    public $type;
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return null;//'cc_format';
+        return 'time_amount_options';
     }
 
     /**
@@ -37,10 +31,11 @@ class CCFormat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'number', 'exp_month', 'exp_year', 'cvv2'], 'required'],
-            [['cvv2', 'exp_year'], 'string',  'max' => 4],
-            [['exp_month'], 'string',  'max'        => 2],
-            [['number'], 'string', 'max'            => 16],
+            [['key', 'value', 'cost'], 'required'],
+            [['created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['value'], 'string'],
+            [['cost'], 'number'],
+            [['key'], 'string', 'max' => 32]
         ];
     }
 
@@ -50,11 +45,13 @@ class CCFormat extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cvv2'      => 'Cvv2',
-            'exp_month' => 'Exp Month',
-            'exp_year'  => 'Exp Year',
-            'number'    => 'Number',
-            'type'      => 'Card Type',
+            'id'      => 'ID',
+            'key'     => 'Key',
+            'value'   => 'Value',
+            'cost'    => 'Cost',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'deleted_at' => 'Deleted At',
         ];
     }
 

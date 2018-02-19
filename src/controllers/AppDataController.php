@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace dje\naabs3\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -9,18 +9,14 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-use common\models\DeviceCountOptions;
+use common\models\AppData;
 use common\models\UserDetails;
 
 /**
- * DeviceCountController implements the CRUD actions for DeviceCountOptions model.
+ * AppDataController implements the CRUD actions for AppData model.
  */
-class DeviceCountController extends Controller
+class AppDataController extends Controller
 {
-    /**
-     * [behaviors description]
-     * @return [type] [description]
-     */
     public function behaviors()
     {
         return [
@@ -28,16 +24,10 @@ class DeviceCountController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow'         => true,
-                        'roles'         => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return UserDetails::isUserAdmin(Yii::$app->user->identity->id);
-                        }
-                    ],
-                    [
-                        'actions' => ['login'],
-                        'allow'   => true,
-                        'roles'   => ['?'],
+                        'allow' => (boolean)UserDetails::find()
+                            ->where(['>=', 'role', 20])
+                            ->andWhere(['id' => Yii::$app->user->id])
+                            ->one(),
                     ],
                 ],
             ],
@@ -51,13 +41,13 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Lists all DeviceCountOptions models.
+     * Lists all AppData models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => DeviceCountOptions::find(),
+            'query' => AppData::find(),
         ]);
 
         return $this->render('index', [
@@ -66,7 +56,7 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Displays a single DeviceCountOptions model.
+     * Displays a single AppData model.
      * @param integer $id
      * @return mixed
      */
@@ -78,13 +68,13 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Creates a new DeviceCountOptions model.
+     * Creates a new AppData model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new DeviceCountOptions();
+        $model = new AppData();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -96,7 +86,7 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Updates an existing DeviceCountOptions model.
+     * Updates an existing AppData model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -115,7 +105,7 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Deletes an existing DeviceCountOptions model.
+     * Deletes an existing AppData model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -128,15 +118,15 @@ class DeviceCountController extends Controller
     }
 
     /**
-     * Finds the DeviceCountOptions model based on its primary key value.
+     * Finds the AppData model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return DeviceCountOptions the loaded model
+     * @return AppData the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = DeviceCountOptions::findOne($id)) !== null) {
+        if (($model = AppData::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
